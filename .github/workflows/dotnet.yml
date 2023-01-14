@@ -24,3 +24,12 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+      
+      
+    - name: Build and Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: astraa/fhir
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
